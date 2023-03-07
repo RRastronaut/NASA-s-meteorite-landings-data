@@ -12,9 +12,10 @@ if response.status_code == 200:
 
     # Add markers for each meteorite landing
     for d in data:
-        if d['reclat'] and d['reclong']:
+         if 'reclat' in d and 'reclong' in d and d['reclat'] and d['reclong']:
             folium.Marker(location=[float(d['reclat']), float(d['reclong'])],
                           popup=f"Name: {d['name']}<br>Mass: {d['mass']}<br>Year: {d['year']}").add_to(m)
+
 
     # Save the map as an HTML file
     m.save('meteorite_landings_map.html')
